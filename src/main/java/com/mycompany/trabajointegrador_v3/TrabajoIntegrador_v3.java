@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.stream.Stream;
 
 
 public class TrabajoIntegrador_v3 {
@@ -213,17 +211,18 @@ public class TrabajoIntegrador_v3 {
         
         
         
-        
+        /*
         for (Ronda ronda : rondas){
             ronda.calcularPuntajeRonda();
             System.out.println("El puntaje total de la ronda " + ronda.getNumeroRonda() + " es de :" + ronda.getPuntajeRonda());
-        }
+        }*/
         
         for (Participante participante : participantes){
             participante.calcularAciertos();
             participante.calcularPuntaje();
             System.out.println("El participante " + participante.getNombre() + " obtuvo " + participante.puntosExtraObtenidos() + " puntos extra.");
             System.out.println("Participante: " + participante.getNombre() + " - Puntaje: " + participante.getPuntaje() + " - Aciertos: " + participante.getCantidadAciertos());
+            System.out.println("-------------------------------------------------------");
         }
         
         
@@ -242,4 +241,6 @@ public class TrabajoIntegrador_v3 {
             return pronosticoEncontrado;
         
     }
+    
+    
 }

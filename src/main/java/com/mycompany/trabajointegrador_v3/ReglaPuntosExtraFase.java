@@ -5,10 +5,9 @@ public class ReglaPuntosExtraFase extends ReglasPuntosExtras {
     private int numeroFase;
     private String nombreEquipo;
 
-    public void setNumeroFase(int numeroFase) {
+    public ReglaPuntosExtraFase(Participante participante, int numeroFase, String nombreEquipo) {
+        super(participante);
         this.numeroFase = numeroFase;
-    }
-    public void setNombreEquipo(String nombreEquipo) {
         this.nombreEquipo = nombreEquipo;
     }
 

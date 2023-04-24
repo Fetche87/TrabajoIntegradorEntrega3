@@ -32,9 +32,22 @@ public class Participante {
 
     public int calcularPuntaje() {
         int puntajeFinal = 0;
-        for (Pronostico pronostico : this.pronosticos) {
-            puntajeFinal += pronostico.calcularPuntajePronostico();
+        for (int j = 1; j <= obtenerCantidadDeFaseTotales(); j++) {
+            int puntajePorFase = 0;
+            for (int i = 1; i <= obtenerCantidadDeRondasTotales(); i++) {
+                int puntajePorRonda = 0;
+                for (Pronostico pronostico : this.pronosticos) {
+                    if (pronostico.getPartido().getNumeroRonda() == i) {
+                        puntajePorRonda += pronostico.calcularPuntajePronostico();
+                    }
+                }
+                puntajePorFase += puntajePorRonda;
+                System.out.println("El puntaje de " + this.getNombre() + " en la ronda " + i + " es: " + puntajePorRonda);
+            }
+            puntajeFinal += puntajePorFase;
+            System.out.println("El puntaje de " + this.getNombre() + " en la fase " + j + " es: " + puntajePorFase);
         }
+
         return this.puntaje = puntajeFinal + this.puntosExtraObtenidos();
     }
 
@@ -49,22 +62,57 @@ public class Participante {
     public void agregarPronostico(Pronostico pronostico) {
         this.pronosticos.add(pronostico);
     }
+    
+    public int obtenerCantidadDeRondasTotales(){
+        int cantidadDeRondasTotales = 0;
+        for (Pronostico pronostico : this.getPronosticos()){
+            if (pronostico.getPartido().getNumeroRonda() > cantidadDeRondasTotales ){
+                cantidadDeRondasTotales = pronostico.getPartido().getNumeroRonda();
+            }
+        }
+        return cantidadDeRondasTotales;
+    }
+    
+    public ArrayList<String> obtenerListadoEquipos(){
+        ArrayList<String> listadoEquipos = new ArrayList<>();
+        for (Pronostico pronostico : this.pronosticos){
+            if (!listadoEquipos.contains(pronostico.getPartido().getEquipo1().getNombre())){
+                listadoEquipos.add(pronostico.getPartido().getEquipo1().getNombre());
+            }
+            if (!listadoEquipos.contains(pronostico.getPartido().getEquipo2().getNombre())){
+                listadoEquipos.add(pronostico.getPartido().getEquipo2().getNombre());
+            }
+        }
+        return listadoEquipos;
+    }
+    
+    public int obtenerCantidadDeFaseTotales(){
+        int cantidadDeFasesTotales = 0;
+        for (Pronostico pronostico : this.getPronosticos()){
+            if (pronostico.getPartido().getNumeroFase() > cantidadDeFasesTotales ){
+                cantidadDeFasesTotales = pronostico.getPartido().getNumeroFase();
+            }
+        }
+        return cantidadDeFasesTotales;
+    }
 
     //Creamos ArrayList con los métodos
     public int puntosExtraObtenidos() {
 
         int puntajeExtraObtenidos = 0;
         //Configuración ReglaPuntosExtraFase
-        ReglaPuntosExtraFase puntosExtraFase = new ReglaPuntosExtraFase();
-        puntosExtraFase.setParticipante(this);
-        puntosExtraFase.setNombreEquipo("Argentina");
-        puntosExtraFase.setNumeroFase(1);
-        puntajeExtraObtenidos += puntosExtraFase.calcularPuntosExtras();
+        for (int i = 1; i <= this.obtenerCantidadDeFaseTotales(); i++){
+            for (String equipo : this.obtenerListadoEquipos()){
+                ReglaPuntosExtraFase puntosExtraFase = new ReglaPuntosExtraFase(this, i,equipo);
+                puntajeExtraObtenidos += puntosExtraFase.calcularPuntosExtras();
+            }
+            
+        }
         //Configuración ReglapuntosExtraRonda
-        ReglaPuntosExtraRonda puntosExtraRonda = new ReglaPuntosExtraRonda();
-        puntosExtraRonda.setRonda(1);
-        puntosExtraRonda.setParticipante(this);
-        puntajeExtraObtenidos += puntosExtraFase.calcularPuntosExtras();
+        for (int i = 1; i <= this.obtenerCantidadDeRondasTotales(); i++){
+            ReglaPuntosExtraRonda puntosExtraRonda = new ReglaPuntosExtraRonda(this, i);
+            puntajeExtraObtenidos += puntosExtraRonda.calcularPuntosExtras();
+        }
         return puntajeExtraObtenidos;
     }
 }

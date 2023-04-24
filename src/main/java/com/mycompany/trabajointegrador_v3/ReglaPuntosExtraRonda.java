@@ -5,9 +5,9 @@ package com.mycompany.trabajointegrador_v3;
 public class ReglaPuntosExtraRonda extends ReglasPuntosExtras {
 
     private int numeroRonda;
-    
 
-    public void setRonda(int numeroRonda) {
+    public ReglaPuntosExtraRonda(Participante participante, int numeroRonda) {
+        super(participante);
         this.numeroRonda = numeroRonda;
     }
   

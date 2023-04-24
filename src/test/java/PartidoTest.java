@@ -45,7 +45,7 @@ public class PartidoTest {
     public void empate() {
         Equipo equipo1 = new Equipo("Real Madrid");
         Equipo equipo2 = new Equipo("Chelsea");
-        Partido partido = new Partido(1, equipo1, 3, 3, equipo2);
+        Partido partido = new Partido(1, equipo1, 3, 3, equipo2,1);
         
         assertEquals(partido.decidirResultado(), ResultadoEnum.EMPATE);
         
@@ -55,7 +55,7 @@ public class PartidoTest {
     public void ganaEquipo2() {
         Equipo equipo1 = new Equipo("Real Madrid");
         Equipo equipo2 = new Equipo("Chelsea");
-        Partido partido = new Partido(1, equipo1, 0, 2, equipo2);
+        Partido partido = new Partido(1, equipo1, 0, 2, equipo2,1);
         
         assertEquals(partido.decidirResultado(), ResultadoEnum.GANA_EQUIPO_2);
         
@@ -65,7 +65,7 @@ public class PartidoTest {
     public void ganaEquipo1() {
         Equipo equipo1 = new Equipo("Real Madrid");
         Equipo equipo2 = new Equipo("Chelsea");
-        Partido partido = new Partido(1, equipo1, 3, 0, equipo2);
+        Partido partido = new Partido(1, equipo1, 3, 0, equipo2,1);
         
         assertEquals(partido.decidirResultado(), ResultadoEnum.GANA_EQUIPO_1);
         
@@ -75,7 +75,7 @@ public class PartidoTest {
     public void ganaEquipo2Fallido() {
         Equipo equipo1 = new Equipo("Real Madrid");
         Equipo equipo2 = new Equipo("Chelsea");
-        Partido partido = new Partido(1, equipo1, 3, 0, equipo2);
+        Partido partido = new Partido(1, equipo1, 3, 0, equipo2,1);
         
         assertNotEquals(partido.decidirResultado(), ResultadoEnum.GANA_EQUIPO_2);
         
