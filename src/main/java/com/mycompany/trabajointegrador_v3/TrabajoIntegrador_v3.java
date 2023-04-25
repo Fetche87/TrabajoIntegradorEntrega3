@@ -24,7 +24,7 @@ public class TrabajoIntegrador_v3 {
         //Lectura del archivo resultado.csv
         final String archivoResultados = "resultados.csv";
         final String separadorComa = ";";
-
+        //Creo los arraylist para partidos y rondas    
         ArrayList<Partido> partidos = new ArrayList<>();
         ArrayList<Ronda> rondas = new ArrayList<>();
 
@@ -45,7 +45,7 @@ public class TrabajoIntegrador_v3 {
 
                 Equipo equipo1 = new Equipo(partidoComoArreglo[2]);
                 Equipo equipo2 = new Equipo(partidoComoArreglo[5]);
-
+                //Hace la verificación si los datos estan completos
                 if (partidoComoArreglo.length != 6) {
                     System.out.println("Error de lectura: Faltan datos en el archivo resultados.csv");
                     return;
@@ -59,7 +59,7 @@ public class TrabajoIntegrador_v3 {
                     numeroDeLaRonda = Integer.valueOf(partidoComoArreglo[1]);
                     golesEquipo1 = Integer.valueOf(partidoComoArreglo[3]);
                     golesEquipo2 = Integer.valueOf(partidoComoArreglo[4]);
-
+                //Verifica si los goles no son nros enteros
                 } catch (NumberFormatException e) {
                     System.out.println("El o los campos número de ronda o goles no son números enteros.");
                 }
@@ -144,7 +144,7 @@ public class TrabajoIntegrador_v3 {
             Statement stmt = con.createStatement();
 
             ResultSet resultConsulta = stmt.executeQuery("SELECT * FROM pronosticos;");
-
+            //Setea como deafult el resultado EMPATE y analiza si la x se encuentra en la posición 4 define el resultado como GANA_EQUIPO_1 o si la x se encuentra en la posición 6 define el resultado como GANA_EQUIPO_2
             while (resultConsulta.next()) {
                 ResultadoEnum resultado = ResultadoEnum.EMPATE;
                 Partido partido = BuscarPartidoPorNombreEquipos(partidos, resultConsulta.getString(3), resultConsulta.getString(7));
