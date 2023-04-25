@@ -42,7 +42,7 @@ public class Partido {
     }
     
     
-    
+    //Compara los goles de cada partido para definir un resultado del partido real
     public ResultadoEnum decidirResultado () {
         ResultadoEnum resultado = ResultadoEnum.EMPATE;
         if (this.golesEquipo1 > this.golesEquipo2){

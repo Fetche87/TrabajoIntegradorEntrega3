@@ -48,7 +48,7 @@ public class Pronostico {
     public int setPuntajePronostico(int puntajeCadaPronostico){
         return puntajePronostico = puntajeCadaPronostico;
     }
-
+    //Compara el resultado del partido con el pronostico y otorga 1 punto por acierto.
     public int calcularAciertoPronostico() {
         ResultadoEnum resultadoReal = this.partido.decidirResultado();
         if (resultadoReal == this.resultado) {

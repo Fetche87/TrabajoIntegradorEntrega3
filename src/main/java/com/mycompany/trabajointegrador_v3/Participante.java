@@ -34,7 +34,7 @@ public class Participante {
     public int getCantidadAciertos() {
         return cantidadAciertos;
     }
-
+    //Realiza el calculo por ronda y los puntos extra por acertar todos los partidos de ronda y los suma al puntaje total
     public int calcularPuntaje() {
         int puntajeFinal = 0;
         for (int j = 1; j <= obtenerCantidadDeFaseTotales(); j++) {
