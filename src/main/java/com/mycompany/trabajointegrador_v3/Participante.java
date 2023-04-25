@@ -8,7 +8,8 @@ public class Participante {
     private int puntaje;
     private int cantidadAciertos;
     private ArrayList<Pronostico> pronosticos = new ArrayList<>();
-
+    public static int PUNTAJE_EXTRA;
+    
     public Participante(String nombre) {
         this.nombre = nombre;
         //this.pronosticos = pronosticos;
@@ -16,6 +17,10 @@ public class Participante {
 
     public String getNombre() {
         return nombre;
+    }
+    
+    public int setPuntajeExtra(int puntajeExtra){
+        return PUNTAJE_EXTRA = puntajeExtra;
     }
 
     public ArrayList<Pronostico> getPronosticos() {
@@ -113,7 +118,7 @@ public class Participante {
             ReglaPuntosExtraRonda puntosExtraRonda = new ReglaPuntosExtraRonda(this, i);
             puntajeExtraObtenidos += puntosExtraRonda.calcularPuntosExtras();
         }
-        return puntajeExtraObtenidos;
+        return puntajeExtraObtenidos * PUNTAJE_EXTRA;
     }
 }
 

@@ -8,7 +8,7 @@ public class Pronostico {
     private ResultadoEnum resultado;
     private int puntaje;
     private String persona;
-    public static final int PUNTAJE_POR_ACIERTO = 1;
+    public int puntajePronostico;
     private int numeroRonda;
 
     public Pronostico(Partido partido, ResultadoEnum resultado, String persona) {
@@ -35,14 +35,18 @@ public class Pronostico {
     }
 
     public int calcularPuntajePronostico() {
-
+        
         ResultadoEnum resultadoReal = this.partido.decidirResultado();
         if (resultadoReal == this.resultado) {
-            return PUNTAJE_POR_ACIERTO;
+            return puntajePronostico;
         }
 
         return 0;
 
+    }
+    
+    public int setPuntajePronostico(int puntajeCadaPronostico){
+        return puntajePronostico = puntajeCadaPronostico;
     }
 
     public int calcularAciertoPronostico() {

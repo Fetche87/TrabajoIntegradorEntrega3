@@ -1,0 +1,7 @@
+{
+   "url_connection": "jdbc:mysql://localhost:3306/pronosticos_deportivos",
+   "user": "root",
+   "password": "HetrTe232#jR33",
+   "PUNTAJE_POR_ACIERTO": 1,
+   "PUNTAJE_EXTRA": 1
+}
