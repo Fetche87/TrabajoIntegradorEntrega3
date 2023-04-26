@@ -63,12 +63,14 @@ public class TrabajoIntegrador_v3 {
                 } catch (NumberFormatException e) {
                     System.out.println("El o los campos número de ronda o goles no son números enteros.");
                 }
+                //Ingresa el valor cantidadDeRondas
                 if (numeroDeLaRonda > cantidadDeRondas) {
                     cantidadDeRondas = numeroDeLaRonda;
                 }
-
+                //Agrega cada objeto Partido con sus atributos
                 partidos.add(new Partido(numeroDeLaRonda, equipo1, golesEquipo1, golesEquipo2, equipo2, numeroFase));
-
+                
+                //Agrega las rondas leyendo el número de rondas
                 if (Integer.valueOf(partidoComoArreglo[1]) != numeroRonda) {
                     numeroRonda = Integer.valueOf(partidoComoArreglo[1]);
                     rondas.add(new Ronda(numeroRonda));
@@ -157,7 +159,7 @@ public class TrabajoIntegrador_v3 {
                 }
 
                 pronosticos.add(new Pronostico(partido, resultado, resultConsulta.getString(2)));
-
+                
                 if (resultConsulta.getString(2) == null ? nombreParticipante != null : !resultConsulta.getString(2).equals(nombreParticipante)) {
                     nombreParticipante = resultConsulta.getString(2);
                     participantes.add(new Participante(nombreParticipante));
@@ -171,9 +173,12 @@ public class TrabajoIntegrador_v3 {
 
         //Creación del ArrayList<Pronostico> pronosticos de cada participante en la clase Participante.
         for (Pronostico pronostico : pronosticos) {
+            //Agrega el puntaje de cada pronóstico.
             pronostico.setPuntajePronostico(puntajePorAcierto);
             for (Participante participante : participantes) {
+                //Agrega el puntaje Extra de cada pronóstico.
                 participante.setPuntajeExtra(puntajeExtra);
+                //Agerga el pronóstico que corresponde a cada participante.
                 if (pronostico.getPersona() == null ? participante.getNombre() == null : pronostico.getPersona().equals(participante.getNombre())) {
                     participante.agregarPronostico(pronostico);
                 }

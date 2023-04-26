@@ -17,7 +17,7 @@ public class Pronostico {
         this.resultado = resultado;
         this.persona = persona;
     }
-
+    //revisar para qué se usa??????
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
