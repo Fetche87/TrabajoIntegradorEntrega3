@@ -21,6 +21,8 @@ import java.util.ArrayList;
 public class TrabajoIntegrador_v3 {
 
     public static void main(String[] args) throws IOException {
+        
+
         //Lectura del archivo resultado.csv
         final String archivoResultados = "resultados.csv";
         final String separadorComa = ";";
