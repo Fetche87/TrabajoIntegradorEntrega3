@@ -8,8 +8,7 @@ public abstract class ReglasPuntosExtras {
         this.participante = participante;
     }
     
-    
-                
+                   
     public abstract int calcularPuntosExtras();
         
    

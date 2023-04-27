@@ -175,8 +175,10 @@ public class TrabajoIntegrador_v3 {
 
         //Creación del ArrayList<Pronostico> pronosticos de cada participante en la clase Participante.
         for (Pronostico pronostico : pronosticos) {
-            //Agrega el puntaje de cada pronóstico.
-            pronostico.setPuntajePronostico(puntajePorAcierto);
+            //Agrega el puntaje de cada pronóstico si acertó el pronostico y se le asigan el puntaje leido del archivo Json.
+            if (pronostico.calcularAciertoPronostico() == 1){
+                pronostico.setPuntajePronostico(puntajePorAcierto);
+            }
             for (Participante participante : participantes) {
                 //Agrega el puntaje Extra de cada pronóstico.
                 participante.setPuntajeExtra(puntajeExtra);
@@ -208,12 +210,14 @@ public class TrabajoIntegrador_v3 {
         }
 
     }
-
+    
+    //Busca el partido por los nombre y el orden que pasamos por argumento.
     public static Partido BuscarPartidoPorNombreEquipos(ArrayList<Partido> partidos, String nombreEquipo1, String nombreEquipo2) {
         Partido partidoEncontrado = partidos.stream().filter(partido -> partido.getEquipo1().getNombre().equals(nombreEquipo1) && partido.getEquipo2().getNombre().equals(nombreEquipo2)).findAny().orElse(null);
         return partidoEncontrado;
     }
-
+    
+    //Busca el pronostico por el partido que le pasamos como argumento.
     public static Pronostico BuscarPronosticoPorPartido(ArrayList<Pronostico> pronosticos, Partido partido) {
         Pronostico pronosticoEncontrado = pronosticos.stream().filter(pronostico -> pronostico.getPartido().equals(partido)).findAny().orElse(null);
         return pronosticoEncontrado;

@@ -10,7 +10,8 @@ public class ReglaPuntosExtraFase extends ReglasPuntosExtras {
         this.numeroFase = numeroFase;
         this.nombreEquipo = nombreEquipo;
     }
-
+    
+    //Si los pronósticos de una fase y de un equipo son todos aciertos devulve true. Si encuentro que no acertó devuelve false.
     private boolean controlTodosAciertos(){
         boolean controlTodosAciertos = true;
         
@@ -23,6 +24,7 @@ public class ReglaPuntosExtraFase extends ReglasPuntosExtras {
         return controlTodosAciertos;
     }
     
+    //True devuelve 1, si es false devuelve 0.
     @Override
     public int calcularPuntosExtras() {
         int puntosExtra = 0;

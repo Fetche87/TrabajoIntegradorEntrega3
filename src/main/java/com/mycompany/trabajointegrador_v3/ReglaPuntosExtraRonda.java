@@ -10,7 +10,7 @@ public class ReglaPuntosExtraRonda extends ReglasPuntosExtras {
         super(participante);
         this.numeroRonda = numeroRonda;
     }
-  
+    //Se asigna un booleano true, toma los pronostico con el mismo número de ronda y si no acertó algún pronostico lo cambia a false por lo que no suma puntos extra.
     private boolean controlTodosAciertos() {
         boolean controlTodosAciertos = true;
         for (Pronostico pronostico : this.participante.getPronosticos()) {
@@ -23,7 +23,8 @@ public class ReglaPuntosExtraRonda extends ReglasPuntosExtras {
         }
         return controlTodosAciertos;
     }
-        
+    
+    //Según el resultado booleano devuelve 1 o 0.
     @Override
     public int calcularPuntosExtras() {
         int puntosExtra;

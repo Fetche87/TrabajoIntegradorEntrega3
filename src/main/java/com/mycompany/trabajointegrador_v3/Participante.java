@@ -43,7 +43,7 @@ public class Participante {
                 int puntajePorRonda = 0;
                 for (Pronostico pronostico : this.pronosticos) {
                     if (pronostico.getPartido().getNumeroRonda() == i) {
-                        puntajePorRonda += pronostico.calcularPuntajePronostico();
+                        puntajePorRonda += pronostico.getPuntajePronostico();
                     }
                 }
                 puntajePorFase += puntajePorRonda;
@@ -55,11 +55,11 @@ public class Participante {
 
         return this.puntaje = puntajeFinal + this.puntosExtraObtenidos();
     }
-
+    //Toma los aciertos de cada pronotico para calcular el total de aciertos del participante.
     public int calcularAciertos() {
         int aciertosFinal = 0;
         for (Pronostico pronostico : this.pronosticos) {
-            aciertosFinal += pronostico.calcularPuntajePronostico();
+            aciertosFinal += pronostico.getPuntajePronostico();
         }
         return this.cantidadAciertos = aciertosFinal;
     }
@@ -67,7 +67,7 @@ public class Participante {
     public void agregarPronostico(Pronostico pronostico) {
         this.pronosticos.add(pronostico);
     }
-    
+    //obtiene cantidad de rondas totales
     public int obtenerCantidadDeRondasTotales(){
         int cantidadDeRondasTotales = 0;
         for (Pronostico pronostico : this.getPronosticos()){
@@ -78,6 +78,7 @@ public class Participante {
         return cantidadDeRondasTotales;
     }
     
+    //Obtiene un listado de equipo para luego buscar el puntaje extra por fase de cada equipo.
     public ArrayList<String> obtenerListadoEquipos(){
         ArrayList<String> listadoEquipos = new ArrayList<>();
         for (Pronostico pronostico : this.pronosticos){

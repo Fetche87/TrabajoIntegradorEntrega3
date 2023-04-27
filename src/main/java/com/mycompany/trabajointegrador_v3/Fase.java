@@ -32,7 +32,7 @@ public class Fase {
     }
     
     
-    
+    //Calcula el puntaje total de la Fase sumándole el puntaje total de cada Ronda.
     public int calcularPuntajeFase() {
         int puntajeFinal = 0;
         for (Ronda ronda : this.rondas) {

@@ -25,10 +25,11 @@ public class Ronda {
         return pronosticos;
     }
     
+    //Calcula el puntaje total de la Ronda sumándole el puntaje de cada pronostico.
     public int calcularPuntajeRonda(){
         int puntajeFinal = 0;
         for (Pronostico pronostico : this.pronosticos){
-            puntajeFinal += pronostico.calcularPuntajePronostico();
+            puntajeFinal += pronostico.getPuntajePronostico();
         }
         return this.puntajeRonda = puntajeFinal;
     }
